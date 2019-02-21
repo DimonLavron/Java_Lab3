@@ -6,18 +6,18 @@ public abstract class BankingService {
     private Person client;
     private Person clerk;
     private String dateOfBeginningService;
-    private String serviceTerm;
+    private int serviceTermInMonth;
     private double serviceFee;
 
     public BankingService() {
     }
 
-    public BankingService(Currency currency, Person client, Person clerk, String dateOfBeginningService, String serviceTerm, double serviceFee) {
+    public BankingService(Currency currency, Person client, Person clerk, String dateOfBeginningService, int serviceTermInMonth, double serviceFee) {
         this.currency = currency;
         this.client = client;
         this.clerk = clerk;
         this.dateOfBeginningService = dateOfBeginningService;
-        this.serviceTerm = serviceTerm;
+        this.serviceTermInMonth = serviceTermInMonth;
         this.serviceFee = serviceFee;
     }
 
@@ -53,12 +53,12 @@ public abstract class BankingService {
         this.dateOfBeginningService = dateOfBeginningService;
     }
 
-    public String getServiceTerm() {
-        return serviceTerm;
+    public int getServiceTermInMonth() {
+        return serviceTermInMonth;
     }
 
-    public void setServiceTerm(String serviceTerm) {
-        this.serviceTerm = serviceTerm;
+    public void setServiceTermInMonth(int serviceTermInMonth) {
+        this.serviceTermInMonth = serviceTermInMonth;
     }
 
     public double getServiceFee() {

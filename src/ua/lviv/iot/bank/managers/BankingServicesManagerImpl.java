@@ -32,7 +32,7 @@ public class BankingServicesManagerImpl implements BankingServicesManager {
     @Override
     public List<BankingService> getAvailableDepositsSortedByServiceTerm() {
         List<BankingService> result = getAvailableDeposits();
-        result.sort(Comparator.comparing(BankingService::getServiceTerm));
+        result.sort(Comparator.comparing(BankingService::getServiceTermInMonth));
         return result;
     }
 
