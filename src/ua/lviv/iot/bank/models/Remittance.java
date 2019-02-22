@@ -8,8 +8,8 @@ public class Remittance extends BankingService {
     public Remittance() {
     }
 
-    public Remittance(Currency currency, Person client, Person clerk, String dateOfBeginningService, String dateOfEndingService, double serviceFee, Person receiver, TypeOfRemittance type) {
-        super(currency, client, clerk, dateOfBeginningService, dateOfEndingService, serviceFee);
+    public Remittance(Currency currency, Person client, Person clerk, String dateOfBeginningService, int serviceTermInMonth, double serviceFee, Person receiver, TypeOfRemittance type) {
+        super(currency, client, clerk, dateOfBeginningService, serviceTermInMonth, serviceFee);
         this.receiver = receiver;
         this.type = type;
     }

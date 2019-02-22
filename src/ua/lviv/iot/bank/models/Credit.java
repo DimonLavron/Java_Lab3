@@ -8,8 +8,8 @@ public class Credit extends BankingService {
     public Credit() {
     }
 
-    public Credit(Currency currency, Person client, Person clerk, String dateOfBeginningService, String dateOfEndingService, double serviceFee, double interestRate, TypeOfCredit type) {
-        super(currency, client, clerk, dateOfBeginningService, dateOfEndingService, serviceFee);
+    public Credit(Currency currency, Person client, Person clerk, String dateOfBeginningService, int serviceTermInMonth, double serviceFee, double interestRate, TypeOfCredit type) {
+        super(currency, client, clerk, dateOfBeginningService, serviceTermInMonth, serviceFee);
         this.interestRate = interestRate;
         this.type = type;
     }
