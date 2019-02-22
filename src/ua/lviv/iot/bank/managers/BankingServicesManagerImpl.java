@@ -10,7 +10,22 @@ import java.util.stream.Collectors;
 
 public class BankingServicesManagerImpl implements BankingServicesManager {
 
-    List<BankingService> bankingServices;
+    private List<BankingService> bankingServices;
+
+    public BankingServicesManagerImpl() {
+    }
+
+    public BankingServicesManagerImpl(List<BankingService> bankingServices) {
+        this.bankingServices = bankingServices;
+    }
+
+    public List<BankingService> getBankingServices() {
+        return bankingServices;
+    }
+
+    public void setBankingServices(List<BankingService> bankingServices) {
+        this.bankingServices = bankingServices;
+    }
 
     @Override
     public List<BankingService> getAvailableCredits() {
@@ -40,6 +55,7 @@ public class BankingServicesManagerImpl implements BankingServicesManager {
     public void sortByServiceFee(List<BankingService> services, boolean reverse) {
         if (reverse)
             services.sort(Comparator.comparing(BankingService::getServiceFee).reversed());
-        services.sort(Comparator.comparing(BankingService::getServiceFee));
+        else
+            services.sort(Comparator.comparing(BankingService::getServiceFee));
     }
 }
