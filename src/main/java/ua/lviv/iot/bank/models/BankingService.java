@@ -12,7 +12,11 @@ public abstract class BankingService {
     public BankingService() {
     }
 
-    public BankingService(final Currency currency, final Person client, final Person clerk, final String dateOfBeginningService, final int serviceTermInMonth, final double serviceFee) {
+    public BankingService(final Currency currency, final Person client,
+                          final Person clerk,
+                          final String dateOfBeginningService,
+                          final int serviceTermInMonth,
+                          final double serviceFee) {
         this.currency = currency;
         this.client = client;
         this.clerk = clerk;
@@ -49,7 +53,8 @@ public abstract class BankingService {
         return dateOfBeginningService;
     }
 
-    public final void setDateOfBeginningService(final String dateOfBeginningService) {
+    public final void
+    setDateOfBeginningService(final String dateOfBeginningService) {
         this.dateOfBeginningService = dateOfBeginningService;
     }
 

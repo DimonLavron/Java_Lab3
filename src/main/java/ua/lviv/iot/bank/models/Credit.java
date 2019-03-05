@@ -8,8 +8,13 @@ public class Credit extends BankingService {
     public Credit() {
     }
 
-    public Credit(final Currency currency, final Person client, final Person clerk, final String dateOfBeginningService, final int serviceTermInMonth, final double serviceFee, final double interestRate, final TypeOfCredit type) {
-        super(currency, client, clerk, dateOfBeginningService, serviceTermInMonth, serviceFee);
+    public Credit(final Currency currency,
+                  final Person client, final Person clerk,
+                  final String dateOfBeginningService,
+                  final int serviceTermInMonth, final double serviceFee,
+                  final double interestRate, final TypeOfCredit type) {
+        super(currency, client, clerk, dateOfBeginningService,
+                serviceTermInMonth, serviceFee);
         this.interestRate = interestRate;
         this.type = type;
     }

@@ -8,8 +8,14 @@ public class Deposit extends BankingService {
     public Deposit() {
     }
 
-    public Deposit(final Currency currency, final Person client, final Person clerk, final String dateOfBeginningService, final int serviceTermInMonth, final double serviceFee, final double interestRate, final TypeOfDeposit type) {
-        super(currency, client, clerk, dateOfBeginningService, serviceTermInMonth, serviceFee);
+    public Deposit(final Currency currency,
+                   final Person client, final Person clerk,
+                   final String dateOfBeginningService,
+                   final int serviceTermInMonth,
+                   final double serviceFee, final double interestRate,
+                   final TypeOfDeposit type) {
+        super(currency, client, clerk, dateOfBeginningService,
+                serviceTermInMonth, serviceFee);
         this.interestRate = interestRate;
         this.type = type;
     }

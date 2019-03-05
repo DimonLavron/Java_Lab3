@@ -15,7 +15,8 @@ public class BankingServicesManagerImpl implements BankingServicesManager {
     public BankingServicesManagerImpl() {
     }
 
-    public BankingServicesManagerImpl(final List<BankingService> bankingServices) {
+    public
+    BankingServicesManagerImpl(final List<BankingService> bankingServices) {
         this.bankingServices = bankingServices;
     }
 
@@ -23,38 +24,46 @@ public class BankingServicesManagerImpl implements BankingServicesManager {
         return bankingServices;
     }
 
-    public final void setBankingServices(final List<BankingService> bankingServices) {
+    public final void
+    setBankingServices(final List<BankingService> bankingServices) {
         this.bankingServices = bankingServices;
     }
 
     @Override
     public final List<BankingService> getAvailableCredits() {
-        return bankingServices.stream().filter(service -> service instanceof Credit).collect(Collectors.toList());
+        return bankingServices.stream().filter(service ->
+                service instanceof Credit).collect(Collectors.toList());
     }
 
     @Override
     public final List<BankingService> getAvailableDeposits() {
-        return bankingServices.stream().filter(service -> service instanceof Deposit).collect(Collectors.toList());
+        return bankingServices.stream().filter(service ->
+                service instanceof Deposit).collect(Collectors.toList());
     }
 
     @Override
     public final List<BankingService> getAvailableCreditsSortedByServiceFee() {
-        List<BankingService> result = bankingServices.stream().filter(service -> service instanceof Credit).collect(Collectors.toList());
+        List<BankingService> result = bankingServices.stream().filter(service ->
+                service instanceof Credit).collect(Collectors.toList());
         result.sort(Comparator.comparing(BankingService::getServiceFee));
         return result;
     }
 
     @Override
-    public final List<BankingService> getAvailableDepositsSortedByServiceTerm() {
+    public final List<BankingService>
+    getAvailableDepositsSortedByServiceTerm() {
         List<BankingService> result = getAvailableDeposits();
-        result.sort(Comparator.comparing(BankingService::getServiceTermInMonth));
+        result.sort(Comparator.comparing(BankingService::
+                getServiceTermInMonth));
         return result;
     }
 
     @Override
-    public final void sortByServiceFee(final List<BankingService> services, final boolean reverse) {
+    public final void sortByServiceFee(final List<BankingService> services,
+                                       final boolean reverse) {
         if (reverse) {
-            services.sort(Comparator.comparing(BankingService::getServiceFee).reversed());
+            services.sort(Comparator.comparing(BankingService::getServiceFee).
+                    reversed());
         } else {
             services.sort(Comparator.comparing(BankingService::getServiceFee));
         }
