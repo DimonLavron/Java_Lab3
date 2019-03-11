@@ -1,0 +1,12 @@
+main\java\ua\lviv\iot\bank\models\Currency.class
+main\java\ua\lviv\iot\bank\models\TypeOfDeposit.class
+main\java\ua\lviv\iot\bank\managers\BankingServicesManager.class
+main\java\ua\lviv\iot\bank\models\BankingService.class
+main\java\ua\lviv\iot\bank\models\Credit.class
+main\java\ua\lviv\iot\bank\models\Deposit.class
+ua\lviv\iot\bank\Main.class
+main\java\ua\lviv\iot\bank\managers\BankingServicesManagerImpl.class
+main\java\ua\lviv\iot\bank\models\Person.class
+main\java\ua\lviv\iot\bank\models\TypeOfRemittance.class
+main\java\ua\lviv\iot\bank\models\Remittance.class
+main\java\ua\lviv\iot\bank\models\TypeOfCredit.class
