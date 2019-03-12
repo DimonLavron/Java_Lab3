@@ -1,6 +1,7 @@
 package ua.lviv.iot.bank.managers;
 
 import ua.lviv.iot.bank.models.BankingService;
+import ua.lviv.iot.bank.models.Credit;
 
 import java.util.List;
 
@@ -10,4 +11,6 @@ public interface BankingServicesManager {
     List<BankingService> getAvailableCreditsSortedByServiceFee();
     List<BankingService> getAvailableDepositsSortedByServiceTerm();
     void sortByServiceFee(List<BankingService> services, boolean reverse);
+
+    void addBankingService(BankingService service);
 }

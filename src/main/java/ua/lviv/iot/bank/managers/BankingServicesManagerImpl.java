@@ -5,12 +5,13 @@ import ua.lviv.iot.bank.models.Credit;
 import ua.lviv.iot.bank.models.Deposit;
 
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class BankingServicesManagerImpl implements BankingServicesManager {
 
-    private List<BankingService> bankingServices;
+    private List<BankingService> bankingServices = new LinkedList<>();
 
     public BankingServicesManagerImpl() {
     }
@@ -67,5 +68,10 @@ public class BankingServicesManagerImpl implements BankingServicesManager {
         } else {
             services.sort(Comparator.comparing(BankingService::getServiceFee));
         }
+    }
+
+    @Override
+    public void addBankingService(BankingService service) {
+        bankingServices.add(service);
     }
 }
