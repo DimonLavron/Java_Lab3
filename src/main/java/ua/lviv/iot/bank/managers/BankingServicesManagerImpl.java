@@ -69,9 +69,4 @@ public class BankingServicesManagerImpl implements BankingServicesManager {
             services.sort(Comparator.comparing(BankingService::getServiceFee));
         }
     }
-
-    @Override
-    public void addBankingService(BankingService service) {
-        bankingServices.add(service);
-    }
 }

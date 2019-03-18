@@ -1,5 +1,13 @@
 package ua.lviv.iot.bank.managers;
 
+import com.openpojo.reflection.PojoClass;
+import com.openpojo.reflection.impl.PojoClassFactory;
+import com.openpojo.validation.Validator;
+import com.openpojo.validation.ValidatorBuilder;
+import com.openpojo.validation.rule.impl.GetterMustExistRule;
+import com.openpojo.validation.rule.impl.SetterMustExistRule;
+import com.openpojo.validation.test.impl.GetterTester;
+import com.openpojo.validation.test.impl.SetterTester;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ua.lviv.iot.bank.models.BankingService;
@@ -18,6 +26,20 @@ class BankingServicesManagerImplTest {
     private List<BankingService> bankingServices;
 
     private BankingServicesManager bankingServicesManager;
+
+    @Test
+    public void testGetterSetter() {
+        PojoClass pojoclass;
+        pojoclass = PojoClassFactory.getPojoClass(BankingServicesManagerImpl.class);
+        Validator validator = ValidatorBuilder
+                .create()
+                .with(new SetterMustExistRule())
+                .with(new GetterMustExistRule())
+                .with(new SetterTester())
+                .with(new GetterTester())
+                .build();
+        validator.validate(pojoclass);
+    }
 
     @Test
     void testGetAvailableCredits() {
