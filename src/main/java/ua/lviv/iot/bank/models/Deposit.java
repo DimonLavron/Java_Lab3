@@ -35,4 +35,14 @@ public class Deposit extends BankingService {
     public final void setType(final TypeOfDeposit type) {
         this.type = type;
     }
+
+    @Override
+    public final String getHeaders() {
+        return super.getHeaders() + ",interestRate,type";
+    }
+
+    @Override
+    public final String toCSV() {
+        return super.toCSV() + "," + getInterestRate() + "," + getType();
+    }
 }
