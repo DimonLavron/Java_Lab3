@@ -11,28 +11,16 @@ import java.util.List;
 
 public class BankingServiceWriter {
 
-    private BufferedWriter writer;
-
     public final void writeToFile(final List<BankingService> services) {
 
-        try {
-            writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("data.csv"), StandardCharsets.UTF_8));
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream("data.csv"), StandardCharsets.UTF_8))) {
             for (BankingService service : services) {
                 writer.write(service.getHeaders() + "\n");
                 writer.write(service.toCSV() + "\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (writer != null) {
-                    writer.flush();
-                    writer.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

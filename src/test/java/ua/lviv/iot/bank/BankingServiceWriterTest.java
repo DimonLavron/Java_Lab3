@@ -16,7 +16,6 @@ class BankingServiceWriterTest {
 
     List<BankingService> services = new LinkedList<>();
     BankingServiceWriter writer = new BankingServiceWriter();
-    BufferedReader reader;
 
     @BeforeEach
     void setUp() {
@@ -42,22 +41,13 @@ class BankingServiceWriterTest {
     void writeToFile() {
         writer.writeToFile(services);
 
-        try {
-            reader = new BufferedReader(new InputStreamReader(new FileInputStream("data.csv"), StandardCharsets.UTF_8));
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("data.csv"), StandardCharsets.UTF_8));) {
             for (BankingService service : services) {
                 assertEquals(reader.readLine(), service.getHeaders());
                 assertEquals(reader.readLine(), service.toCSV());
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 }
