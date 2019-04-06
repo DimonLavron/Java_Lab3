@@ -15,8 +15,8 @@ public class BankingServiceWriter {
 
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream("data.csv"), StandardCharsets.UTF_8))) {
+            writer.write(BankingService.getHeaders() + "\n");
             for (BankingService service : services) {
-                writer.write(service.getHeaders() + "\n");
                 writer.write(service.toCSV() + "\n");
             }
         } catch (IOException e) {

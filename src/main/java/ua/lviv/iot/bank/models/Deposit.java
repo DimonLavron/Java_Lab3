@@ -37,12 +37,8 @@ public class Deposit extends BankingService {
     }
 
     @Override
-    public final String getHeaders() {
-        return super.getHeaders() + ",interestRate,type";
-    }
-
-    @Override
     public final String toCSV() {
-        return super.toCSV() + "," + getInterestRate() + "," + getType();
+        return super.toCSV() + ", " + getType() + ", " + getInterestRate()
+                + ", ";
     }
 }

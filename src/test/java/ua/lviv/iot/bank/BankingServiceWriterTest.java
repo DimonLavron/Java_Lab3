@@ -41,9 +41,9 @@ class BankingServiceWriterTest {
     void writeToFile() {
         writer.writeToFile(services);
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("data.csv"), StandardCharsets.UTF_8));) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("data.csv"), StandardCharsets.UTF_8))) {
+            assertEquals(reader.readLine(), BankingService.getHeaders());
             for (BankingService service : services) {
-                assertEquals(reader.readLine(), service.getHeaders());
                 assertEquals(reader.readLine(), service.toCSV());
             }
         } catch (IOException e) {
