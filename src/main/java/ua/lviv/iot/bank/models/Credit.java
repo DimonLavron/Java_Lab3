@@ -34,4 +34,14 @@ public class Credit extends BankingService {
     public final void setType(final TypeOfCredit type) {
         this.type = type;
     }
+
+    @Override
+    public String getHeaders() {
+        return super.getHeaders() + ", type, interestRate";
+    }
+
+    @Override
+    public final String toCSV() {
+        return super.toCSV() + ", " + getType() + ", " + getInterestRate();
+    }
 }

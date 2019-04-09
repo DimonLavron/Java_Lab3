@@ -73,4 +73,15 @@ public abstract class BankingService {
     public final void setServiceFee(final double serviceFee) {
         this.serviceFee = serviceFee;
     }
+
+    public String getHeaders() {
+        return "currency, client, clerk, dateOfBeginningService, "
+                + "serviceTermInMonth, serviceFee";
+    }
+
+    public String toCSV() {
+        return "" + getCurrency() + ", " + getClient() + ", " + getClerk()
+                + ", " + getDateOfBeginningService() + ", "
+                + getServiceTermInMonth() + ", " + getServiceFee();
+    }
 }
