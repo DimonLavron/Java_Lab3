@@ -36,7 +36,12 @@ public class Remittance extends BankingService {
     }
 
     @Override
+    public String getHeaders() {
+        return super.getHeaders() + ", type, receiver";
+    }
+
+    @Override
     public final String toCSV() {
-        return super.toCSV() + ", , " + getType() + ", " + getReceiver();
+        return super.toCSV() + ", " + getType() + ", " + getReceiver();
     }
 }

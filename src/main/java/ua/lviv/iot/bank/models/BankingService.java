@@ -74,10 +74,9 @@ public abstract class BankingService {
         this.serviceFee = serviceFee;
     }
 
-    public static String getHeaders() {
+    public String getHeaders() {
         return "currency, client, clerk, dateOfBeginningService, "
-                + "serviceTermInMonth, serviceFee, type, interestRate, "
-                + "receiver";
+                + "serviceTermInMonth, serviceFee";
     }
 
     public String toCSV() {
