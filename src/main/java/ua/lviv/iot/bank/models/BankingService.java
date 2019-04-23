@@ -1,6 +1,13 @@
 package ua.lviv.iot.bank.models;
 
+import javax.persistence.*;
+
+@MappedSuperclass
 public abstract class BankingService {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     private Currency currency;
     private Person client;
@@ -74,6 +81,15 @@ public abstract class BankingService {
         this.serviceFee = serviceFee;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
     public String getHeaders() {
         return "currency, client, clerk, dateOfBeginningService, "
                 + "serviceTermInMonth, serviceFee";
@@ -83,5 +99,17 @@ public abstract class BankingService {
         return "" + getCurrency() + ", " + getClient() + ", " + getClerk()
                 + ", " + getDateOfBeginningService() + ", "
                 + getServiceTermInMonth() + ", " + getServiceFee();
+    }
+
+    @Override
+    public String toString() {
+        return "BankingService{" +
+                "currency=" + currency +
+                ", client=" + client +
+                ", clerk=" + clerk +
+                ", dateOfBeginningService='" + dateOfBeginningService + '\'' +
+                ", serviceTermInMonth=" + serviceTermInMonth +
+                ", serviceFee=" + serviceFee +
+                '}';
     }
 }

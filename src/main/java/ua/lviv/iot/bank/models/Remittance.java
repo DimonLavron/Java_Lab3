@@ -1,5 +1,8 @@
 package ua.lviv.iot.bank.models;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Remittance extends BankingService {
 
     private Person receiver;
