@@ -1,8 +1,18 @@
 package ua.lviv.iot.bank.models;
 
+import javax.persistence.*;
+
+@Entity
 public class Remittance extends BankingService {
 
+    @Embedded
+    @AttributeOverrides(value = {
+            @AttributeOverride(name="firstName", column=@Column(name="receiverFirstName")),
+            @AttributeOverride (name="surname", column=@Column(name="receiverSurname"))
+    })
     private Person receiver;
+
+    @Enumerated(EnumType.STRING)
     private TypeOfRemittance type;
 
     public Remittance() {

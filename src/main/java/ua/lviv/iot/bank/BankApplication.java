@@ -4,10 +4,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import ua.lviv.iot.bank.models.Credit;
-import ua.lviv.iot.bank.models.Currency;
-import ua.lviv.iot.bank.models.Person;
-import ua.lviv.iot.bank.models.TypeOfCredit;
+import ua.lviv.iot.bank.models.*;
+import ua.lviv.iot.bank.repositories.CreditRepository;
+import ua.lviv.iot.bank.repositories.DepositRepository;
+import ua.lviv.iot.bank.repositories.RemittanceRepository;
 
 @SpringBootApplication
 public class BankApplication {
@@ -17,7 +17,7 @@ public class BankApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(ua.lviv.iot.bank.CreditRepository repository) {
+	public CommandLineRunner creditBean(CreditRepository repository) {
 		return (args) -> {
 			repository.save(new Credit(Currency.EUR,
 					new Person("Dima", "Lavrishyn"), new Person("Ivan", "Petrov"),
@@ -31,6 +31,42 @@ public class BankApplication {
 					16.1, TypeOfCredit.CAR));
 
 			repository.findAll().forEach(credit -> System.out.println(credit));
+		};
+	}
+
+	@Bean
+	public CommandLineRunner depositBean(DepositRepository repository) {
+		return (args) -> {
+			repository.save(new Deposit(Currency.RUB,
+					new Person("Ruslan", "Trest"), new Person("Ivan", "Petrov"),
+					"25.10.2017", 36, 5.4, 11.3,
+					TypeOfDeposit.WITH_REPLENISHMENT));
+			repository.save(new Deposit(Currency.EUR,
+					new Person("Viktoriia", "Shtank"),
+					new Person("Vasyl", "Lyubomyrov"), "05.10.2017", 24, 15.0,
+					14.1, TypeOfDeposit.WITH_PARTIAL_REMOVAL));
+			repository.save(new Deposit(Currency.USD,
+					new Person("Bogdan", "Tsvetkov"),
+					new Person("Vasyl", "Lyubomyrov"), "11.04.2017", 20, 8.3,
+					10.8, TypeOfDeposit.WITHOUT_REMOVAL_AND_REPLENISHMENT));
+
+			repository.findAll().forEach(deposit -> System.out.println(deposit));
+		};
+	}
+
+	@Bean
+	public CommandLineRunner remittanceBean(RemittanceRepository repository) {
+		return (args) -> {
+			repository.save(new Remittance(Currency.USD,
+					new Person("Nataliia", "Karpova"),
+					new Person("Artem", "Sudakov"), "24.02.2016", 42, 11.7,
+					new Person("Petro", "Karpov"), TypeOfRemittance.INTERNATIONAL));
+			repository.save(new Remittance(Currency.UAH,
+					new Person("Ilona", "Varan"),
+					new Person("Melisa", "Harchenko"), "20.02.2019", 6, 4.5,
+					new Person("Yulia", "Malahova"), TypeOfRemittance.UKRAINIAN));
+
+			repository.findAll().forEach(remittance -> System.out.println(remittance));
 		};
 	}
 }

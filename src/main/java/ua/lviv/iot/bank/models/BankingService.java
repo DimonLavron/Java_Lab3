@@ -9,6 +9,7 @@ public abstract class BankingService {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Enumerated(EnumType.STRING)
     private Currency currency;
 
     @Embedded

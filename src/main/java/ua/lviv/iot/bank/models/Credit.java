@@ -1,11 +1,15 @@
 package ua.lviv.iot.bank.models;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity
 public class Credit extends BankingService {
 
     private double interestRate;
+
+    @Enumerated(EnumType.STRING)
     private TypeOfCredit type;
 
     public Credit() {
