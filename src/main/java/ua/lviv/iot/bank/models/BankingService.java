@@ -2,7 +2,7 @@ package ua.lviv.iot.bank.models;
 
 import javax.persistence.*;
 
-@MappedSuperclass
+@Entity
 public abstract class BankingService {
 
     @Id
@@ -10,8 +10,21 @@ public abstract class BankingService {
     private Integer id;
 
     private Currency currency;
+
+    @Embedded
+    @AttributeOverrides (value = {
+        @AttributeOverride (name="firstName", column=@Column(name="clientFirstName")),
+        @AttributeOverride (name="surname", column=@Column(name="clientSurname"))
+    })
     private Person client;
+
+    @Embedded
+    @AttributeOverrides (value = {
+            @AttributeOverride (name="firstName", column=@Column(name="clerkFirstName")),
+            @AttributeOverride (name="surname", column=@Column(name="clerkSurname"))
+    })
     private Person clerk;
+
     private String dateOfBeginningService;
     private int serviceTermInMonth;
     private double serviceFee;
@@ -89,7 +102,6 @@ public abstract class BankingService {
         this.id = id;
     }
 
-
     public String getHeaders() {
         return "currency, client, clerk, dateOfBeginningService, "
                 + "serviceTermInMonth, serviceFee";
@@ -99,17 +111,5 @@ public abstract class BankingService {
         return "" + getCurrency() + ", " + getClient() + ", " + getClerk()
                 + ", " + getDateOfBeginningService() + ", "
                 + getServiceTermInMonth() + ", " + getServiceFee();
-    }
-
-    @Override
-    public String toString() {
-        return "BankingService{" +
-                "currency=" + currency +
-                ", client=" + client +
-                ", clerk=" + clerk +
-                ", dateOfBeginningService='" + dateOfBeginningService + '\'' +
-                ", serviceTermInMonth=" + serviceTermInMonth +
-                ", serviceFee=" + serviceFee +
-                '}';
     }
 }

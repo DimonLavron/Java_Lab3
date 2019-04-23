@@ -1,4 +1,4 @@
-package ua.lviv.iot.bank.database;
+package ua.lviv.iot.bank;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,14 +10,14 @@ import ua.lviv.iot.bank.models.Person;
 import ua.lviv.iot.bank.models.TypeOfCredit;
 
 @SpringBootApplication
-public class DatabaseApplication {
+public class BankApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DatabaseApplication.class, args);
+		SpringApplication.run(BankApplication.class, args);
 	}
 
 	@Bean
-	public CommandLineRunner demo(CreditRepository repository) {
+	public CommandLineRunner demo(ua.lviv.iot.bank.CreditRepository repository) {
 		return (args) -> {
 			repository.save(new Credit(Currency.EUR,
 					new Person("Dima", "Lavrishyn"), new Person("Ivan", "Petrov"),

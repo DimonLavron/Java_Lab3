@@ -1,8 +1,5 @@
 package ua.lviv.iot.bank.models;
 
-import javax.persistence.Entity;
-
-@Entity
 public class Deposit extends BankingService {
 
     private double interestRate;

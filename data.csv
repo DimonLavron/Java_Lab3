@@ -1,6 +1,0 @@
-currency, client, clerk, dateOfBeginningService, serviceTermInMonth, serviceFee, type, interestRate
-EUR, Dima Lavrishyn, Ivan Petrov, 12.01.2019, 12, 12.5, CONSUMER, 9.8
-currency, client, clerk, dateOfBeginningService, serviceTermInMonth, serviceFee, type, interestRate
-USD, Bogdan Tsvetkov, Vasyl Lyubomyrov, 11.04.2017, 20, 8.3, WITHOUT_REMOVAL_AND_REPLENISHMENT, 10.8
-currency, client, clerk, dateOfBeginningService, serviceTermInMonth, serviceFee, type, receiver
-UAH, Ilona Varan, Melisa Harchenko, 20.02.2019, 6, 4.5, UKRAINIAN, Yulia Malahova

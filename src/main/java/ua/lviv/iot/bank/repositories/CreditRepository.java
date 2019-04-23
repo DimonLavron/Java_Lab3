@@ -1,4 +1,4 @@
-package ua.lviv.iot.bank.database;
+package ua.lviv.iot.bank;
 
 import org.springframework.data.repository.CrudRepository;
 import ua.lviv.iot.bank.models.Credit;

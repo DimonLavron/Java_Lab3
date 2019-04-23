@@ -1,4 +1,4 @@
-package ua.lviv.iot.database;
+package ua.lviv.iot.bank;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DatabaseApplicationTests {
+public class BankApplicationTests {
 
 	@Test
 	public void contextLoads() {
