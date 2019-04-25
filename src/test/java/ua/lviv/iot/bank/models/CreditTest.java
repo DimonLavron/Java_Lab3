@@ -8,12 +8,12 @@ import com.openpojo.validation.rule.impl.GetterMustExistRule;
 import com.openpojo.validation.rule.impl.SetterMustExistRule;
 import com.openpojo.validation.test.impl.GetterTester;
 import com.openpojo.validation.test.impl.SetterTester;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class CreditTest {
+class CreditTest {
 
     @Test
-    public void testGetterSetter() {
+    void testGetterSetter() {
         PojoClass pojoclass = PojoClassFactory.getPojoClass(Credit.class);
         Validator validator = ValidatorBuilder
                 .create()
