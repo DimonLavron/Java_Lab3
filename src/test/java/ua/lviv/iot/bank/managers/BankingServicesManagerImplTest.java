@@ -8,20 +8,18 @@ import com.openpojo.validation.rule.impl.GetterMustExistRule;
 import com.openpojo.validation.rule.impl.SetterMustExistRule;
 import com.openpojo.validation.test.impl.GetterTester;
 import com.openpojo.validation.test.impl.SetterTester;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import ua.lviv.iot.bank.models.BankingService;
 import ua.lviv.iot.bank.models.Credit;
 import ua.lviv.iot.bank.models.Deposit;
 import ua.lviv.iot.bank.models.Remittance;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-class BankingServicesManagerImplTest {
+public class BankingServicesManagerImplTest {
 
     private List<BankingService> bankingServices;
 
@@ -42,7 +40,7 @@ class BankingServicesManagerImplTest {
     }
 
     @Test
-    void testGetAvailableCredits() {
+    public void testGetAvailableCredits() {
         bankingServices = new LinkedList<>();
 
         bankingServices.add(new Credit());
@@ -55,7 +53,7 @@ class BankingServicesManagerImplTest {
     }
 
     @Test
-    void getAvailableDeposits() {
+    public void getAvailableDeposits() {
         bankingServices = new LinkedList<>();
 
         bankingServices.add(new Deposit());
@@ -69,7 +67,7 @@ class BankingServicesManagerImplTest {
     }
 
     @Test
-    void getAvailableCreditsSortedByServiceFee() {
+    public void getAvailableCreditsSortedByServiceFee() {
         bankingServices = new LinkedList<>();
 
         Credit credit1 = new Credit();
@@ -97,7 +95,7 @@ class BankingServicesManagerImplTest {
     }
 
     @Test
-    void getAvailableDepositsSortedByServiceTerm() {
+    public void getAvailableDepositsSortedByServiceTerm() {
         bankingServices = new LinkedList<>();
 
         Deposit deposit1 = new Deposit();
@@ -125,7 +123,7 @@ class BankingServicesManagerImplTest {
     }
 
     @Test
-    void sortByServiceFee() {
+    public void sortByServiceFee() {
         bankingServices = new LinkedList<>();
 
         Credit credit = new Credit();

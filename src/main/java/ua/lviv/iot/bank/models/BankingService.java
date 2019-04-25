@@ -14,15 +14,19 @@ public abstract class BankingService {
 
     @Embedded
     @AttributeOverrides (value = {
-        @AttributeOverride (name="firstName", column=@Column(name="clientFirstName")),
-        @AttributeOverride (name="surname", column=@Column(name="clientSurname"))
+        @AttributeOverride (name = "firstName",
+                column = @Column(name = "clientFirstName")),
+        @AttributeOverride (name = "surname",
+                column = @Column(name = "clientSurname"))
     })
     private Person client;
 
     @Embedded
     @AttributeOverrides (value = {
-            @AttributeOverride (name="firstName", column=@Column(name="clerkFirstName")),
-            @AttributeOverride (name="surname", column=@Column(name="clerkSurname"))
+            @AttributeOverride (name = "firstName",
+                    column = @Column(name = "clerkFirstName")),
+            @AttributeOverride (name = "surname",
+                    column = @Column(name = "clerkSurname"))
     })
     private Person clerk;
 
@@ -95,11 +99,11 @@ public abstract class BankingService {
         this.serviceFee = serviceFee;
     }
 
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public final void setId(final Integer id) {
         this.id = id;
     }
 
@@ -112,5 +116,16 @@ public abstract class BankingService {
         return "" + getCurrency() + ", " + getClient() + ", " + getClerk()
                 + ", " + getDateOfBeginningService() + ", "
                 + getServiceTermInMonth() + ", " + getServiceFee();
+    }
+
+    @Override
+    public String toString() {
+        return "id=" + id
+                + ", currency=" + currency
+                + ", client=" + client
+                + ", clerk=" + clerk
+                + ", dateOfBeginningService='" + dateOfBeginningService + '\''
+                + ", serviceTermInMonth=" + serviceTermInMonth
+                + ", serviceFee=" + serviceFee + ", ";
     }
 }

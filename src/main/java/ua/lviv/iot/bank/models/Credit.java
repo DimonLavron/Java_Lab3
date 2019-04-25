@@ -43,12 +43,19 @@ public class Credit extends BankingService {
     }
 
     @Override
-    public String getHeaders() {
+    public final String getHeaders() {
         return super.getHeaders() + ", type, interestRate";
     }
 
     @Override
     public final String toCSV() {
         return super.toCSV() + ", " + getType() + ", " + getInterestRate();
+    }
+
+    @Override
+    public final String toString() {
+        return "Credit{" + super.toString()
+                + "interestRate=" + interestRate
+                + ", type=" + type + '}';
     }
 }

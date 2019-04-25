@@ -7,8 +7,10 @@ public class Remittance extends BankingService {
 
     @Embedded
     @AttributeOverrides(value = {
-            @AttributeOverride(name="firstName", column=@Column(name="receiverFirstName")),
-            @AttributeOverride (name="surname", column=@Column(name="receiverSurname"))
+            @AttributeOverride(name = "firstName",
+                    column = @Column(name = "receiverFirstName")),
+            @AttributeOverride (name = "surname",
+                    column = @Column(name = "receiverSurname"))
     })
     private Person receiver;
 
@@ -46,12 +48,19 @@ public class Remittance extends BankingService {
     }
 
     @Override
-    public String getHeaders() {
+    public final String getHeaders() {
         return super.getHeaders() + ", type, receiver";
     }
 
     @Override
     public final String toCSV() {
         return super.toCSV() + ", " + getType() + ", " + getReceiver();
+    }
+
+    @Override
+    public final String toString() {
+        return "Remittance{" + super.toString()
+                + "receiver=" + receiver
+                + ", type=" + type + '}';
     }
 }

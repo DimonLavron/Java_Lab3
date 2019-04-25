@@ -8,9 +8,9 @@ import com.openpojo.validation.rule.impl.GetterMustExistRule;
 import com.openpojo.validation.rule.impl.SetterMustExistRule;
 import com.openpojo.validation.test.impl.GetterTester;
 import com.openpojo.validation.test.impl.SetterTester;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class DepositTest {
+public class DepositTest {
 
     @Test
     public void testGetterSetter() {

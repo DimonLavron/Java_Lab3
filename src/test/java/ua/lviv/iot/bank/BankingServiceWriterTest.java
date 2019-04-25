@@ -1,8 +1,8 @@
 package ua.lviv.iot.bank;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import ua.lviv.iot.bank.models.*;
 
 import java.io.*;
@@ -10,15 +10,15 @@ import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-class BankingServiceWriterTest {
+public class BankingServiceWriterTest {
 
     List<BankingService> services = new LinkedList<>();
     BankingServiceWriter writer = new BankingServiceWriter();
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         services.add(new Credit(Currency.EUR,
                 new Person("Dima", "Lavrishyn"), new Person("Ivan", "Petrov"),
                 "12.01.2019", 12, 12.5, 9.8, TypeOfCredit.CONSUMER));
@@ -32,13 +32,13 @@ class BankingServiceWriterTest {
                 new Person("Yulia", "Malahova"), TypeOfRemittance.UKRAINIAN));
     }
 
-    @AfterEach
-    void tearDown() {
+    @After
+    public void tearDown() {
         services.clear();
     }
 
     @Test
-    void writeToFile() {
+    public void testWriteToFile() {
         writer.writeToFile(services);
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("data.csv"), StandardCharsets.UTF_8))) {

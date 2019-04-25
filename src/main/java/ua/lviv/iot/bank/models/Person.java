@@ -32,7 +32,7 @@ public class Person {
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return firstName + " " + surname;
     }
 }
