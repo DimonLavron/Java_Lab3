@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 class RemittanceTest {
 
     @Test
-    public void testGetterSetter() {
+    void testGetterSetter() {
         PojoClass pojoclass = PojoClassFactory.getPojoClass(Remittance.class);
         Validator validator = ValidatorBuilder
                 .create()

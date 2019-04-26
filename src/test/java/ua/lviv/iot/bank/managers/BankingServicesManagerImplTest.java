@@ -8,18 +8,16 @@ import com.openpojo.validation.rule.impl.GetterMustExistRule;
 import com.openpojo.validation.rule.impl.SetterMustExistRule;
 import com.openpojo.validation.test.impl.GetterTester;
 import com.openpojo.validation.test.impl.SetterTester;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ua.lviv.iot.bank.models.BankingService;
 import ua.lviv.iot.bank.models.Credit;
 import ua.lviv.iot.bank.models.Deposit;
 import ua.lviv.iot.bank.models.Remittance;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BankingServicesManagerImplTest {
 
@@ -28,7 +26,7 @@ class BankingServicesManagerImplTest {
     private BankingServicesManager bankingServicesManager;
 
     @Test
-    public void testGetterSetter() {
+    void testGetterSetter() {
         PojoClass pojoclass;
         pojoclass = PojoClassFactory.getPojoClass(BankingServicesManagerImpl.class);
         Validator validator = ValidatorBuilder
@@ -42,7 +40,7 @@ class BankingServicesManagerImplTest {
     }
 
     @Test
-    void testGetAvailableCredits() {
+    public void testGetAvailableCredits() {
         bankingServices = new LinkedList<>();
 
         bankingServices.add(new Credit());

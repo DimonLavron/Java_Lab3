@@ -1,10 +1,35 @@
 package ua.lviv.iot.bank.models;
 
+import javax.persistence.*;
+
+@Entity
 public abstract class BankingService {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @Enumerated(EnumType.STRING)
     private Currency currency;
+
+    @Embedded
+    @AttributeOverrides (value = {
+        @AttributeOverride (name = "firstName",
+                column = @Column(name = "clientFirstName")),
+        @AttributeOverride (name = "surname",
+                column = @Column(name = "clientSurname"))
+    })
     private Person client;
+
+    @Embedded
+    @AttributeOverrides (value = {
+            @AttributeOverride (name = "firstName",
+                    column = @Column(name = "clerkFirstName")),
+            @AttributeOverride (name = "surname",
+                    column = @Column(name = "clerkSurname"))
+    })
     private Person clerk;
+
     private String dateOfBeginningService;
     private int serviceTermInMonth;
     private double serviceFee;
@@ -74,6 +99,14 @@ public abstract class BankingService {
         this.serviceFee = serviceFee;
     }
 
+    public final Integer getId() {
+        return id;
+    }
+
+    public final void setId(final Integer id) {
+        this.id = id;
+    }
+
     public String getHeaders() {
         return "currency, client, clerk, dateOfBeginningService, "
                 + "serviceTermInMonth, serviceFee";
@@ -83,5 +116,16 @@ public abstract class BankingService {
         return "" + getCurrency() + ", " + getClient() + ", " + getClerk()
                 + ", " + getDateOfBeginningService() + ", "
                 + getServiceTermInMonth() + ", " + getServiceFee();
+    }
+
+    @Override
+    public String toString() {
+        return "id=" + id
+                + ", currency=" + currency
+                + ", client=" + client
+                + ", clerk=" + clerk
+                + ", dateOfBeginningService='" + dateOfBeginningService + '\''
+                + ", serviceTermInMonth=" + serviceTermInMonth
+                + ", serviceFee=" + serviceFee + ", ";
     }
 }

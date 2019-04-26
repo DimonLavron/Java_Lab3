@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BankingServiceWriterTest {
 
@@ -38,7 +38,7 @@ class BankingServiceWriterTest {
     }
 
     @Test
-    void writeToFile() {
+    void testWriteToFile() {
         writer.writeToFile(services);
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("data.csv"), StandardCharsets.UTF_8))) {

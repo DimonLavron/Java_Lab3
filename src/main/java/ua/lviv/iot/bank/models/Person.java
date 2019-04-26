@@ -1,8 +1,14 @@
 package ua.lviv.iot.bank.models;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Person {
     private String firstName;
     private String surname;
+
+    public Person() {
+    }
 
     public Person(final String firstName, final String surname) {
         this.firstName = firstName;
@@ -26,7 +32,7 @@ public class Person {
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return firstName + " " + surname;
     }
 }
