@@ -21,24 +21,9 @@ public class CreditService {
         return repository.save(credit);
     }
 
-    @RequestMapping(value = "/credit/{id}", method = RequestMethod.PUT)
-    public Credit putCredit(@PathVariable Integer id, @RequestBody Credit newCredit) {
-        return repository.findById(id)
-                .map(credit -> {
-                    credit.setCurrency(newCredit.getCurrency());
-                    credit.setClient(newCredit.getClient());
-                    credit.setClerk(newCredit.getClerk());
-                    credit.setDateOfBeginningService(newCredit.getDateOfBeginningService());
-                    credit.setServiceTermInMonth(newCredit.getServiceTermInMonth());
-                    credit.setServiceFee(newCredit.getServiceFee());
-                    credit.setInterestRate(newCredit.getInterestRate());
-                    credit.setType(newCredit.getType());
-                    return repository.save(credit);
-                })
-                .orElseGet(() -> {
-                    newCredit.setId(id);
-                    return repository.save(newCredit);
-                });
+    @RequestMapping(value = "/credit", method = RequestMethod.PUT)
+    public Credit putCredit(@RequestBody Credit credit) {
+        return repository.save(credit);
     }
 
     @RequestMapping(value = "/credit/{id}", method = RequestMethod.DELETE)
