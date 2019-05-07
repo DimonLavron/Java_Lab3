@@ -29,7 +29,7 @@ public class BankApplication {
                     6.4, TypeOfCredit.MORTGAGE));
 			repository.save(new Credit(Currency.RUB,
 					new Person("Olena", "Gavrylyuk"),
-					new Person("Melisa", "Harchenko"), "19.05.2016", 44, 11.3,
+						new Person("Melisa", "Harchenko"), "19.05.2016", 44, 11.3,
 					16.1, TypeOfCredit.CAR));
 
 			repository.findAll().forEach(credit -> System.out.println(credit));
