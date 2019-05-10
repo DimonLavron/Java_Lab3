@@ -5,15 +5,31 @@ import org.springframework.web.bind.annotation.*;
 import ua.lviv.iot.bank.models.Credit;
 import ua.lviv.iot.bank.repositories.CreditRepository;
 
+import java.util.LinkedList;
+import java.util.List;
+
 @RestController
 public class CreditService {
 
     @Autowired
     private CreditRepository repository;
 
+    @RequestMapping(value = "/credit/", method = RequestMethod.GET)
+    public List<Credit> getAllCredits() {
+        List<Credit> credits = new LinkedList<>();
+        repository.findAll().forEach(credits::add);
+        if(credits.isEmpty()) {
+            return null;
+        }
+        return credits;
+    }
+
     @RequestMapping(value = "/credit/{id}", method = RequestMethod.GET)
     public Credit getCredit(@PathVariable Integer id) {
-        return repository.findById(id).get();
+        if (repository.findById(id).isPresent()) {
+            return repository.findById(id).get();
+        }
+        return null;
     }
 
     @RequestMapping(value = "/credit", method = RequestMethod.POST)
@@ -28,6 +44,8 @@ public class CreditService {
 
     @RequestMapping(value = "/credit/{id}", method = RequestMethod.DELETE)
     public void deleteCredit(@PathVariable Integer id) {
-        repository.deleteById(id);
+        if (repository.findById(id).isPresent()) {
+            repository.deleteById(id);
+        }
     }
 }
